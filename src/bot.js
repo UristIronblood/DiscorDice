@@ -1,11 +1,12 @@
-let Discord = require("discord.js");
-let auth = require("./auth");
+const Discord = require("discord.js");
+const auth = require("./Config/auth");
 let roll = require("./roll");
-let constants = require("./constants");
+const constants = require("./Config/constants");
 let client = new Discord.Client();
 
 client.on("ready", () => {
     console.log("I am ready!");
+    client.user.setUsername("Dice Bot");
 });
 
 client.on("message", (message) => {
@@ -15,6 +16,8 @@ client.on("message", (message) => {
         message.channel.send(constants.help);
     } else if (message.content.startsWith("ping")) {
         message.channel.send("pong");
+    } else if (message.content.startsWith("ding")) {
+        message.channel.send("dong");
     }
 });
 
